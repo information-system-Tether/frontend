@@ -5,9 +5,11 @@ import { MetricCard } from "./MetricCard";
 import metricIcon from "../assets/metric-icon.svg";
 import metricIcon2 from "../assets/metric-icon-2.svg";
 import stepsIcon from "../assets/steps.svg";
+import Sidebar from "./Sidebar";
 
 export const HomePage = () => {
   const [isRecordDialogOpen, setIsRecordDialogOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const closeDialog = () => setIsRecordDialogOpen(false);
 
@@ -18,30 +20,8 @@ export const HomePage = () => {
         data-m3-mode="green-LT"
         data-shape-mode="baseline"
       >
-        <aside className="flex flex-col w-[220px] items-start pt-4 pb-5 px-5 relative self-stretch bg-lightgreen-alightgreen">
-          <div className="relative self-stretch w-full mb-6">
-            <div className="inline-flex items-center justify-center relative">
-              <button
-                type="button"
-                className="flex w-14 rounded-2xl flex-col items-center justify-center relative overflow-hidden"
-                aria-label="Открыть меню"
-              >
-                <span className="flex h-14 items-center justify-center relative self-stretch w-full">
-                  <IconHomeMenu className="!relative !w-6 !h-6 !aspect-[1]" />
-                </span>
-              </button>
-            </div>
-          </div>
-          
-          <nav className="flex flex-col items-start gap-2 w-full mt-2">
-            <a href="#" className="flex items-center w-full px-4 py-2 text-sm text-lightgreen-adarkgreen font-medium rounded-xl hover:bg-black/5">Главная</a>
-            <a href="#" className="flex items-center w-full px-4 py-2 text-sm text-lightgreen-adarkgreen font-normal rounded-xl hover:bg-black/5">Дневник питания</a>
-            <a href="#" className="flex items-center w-full px-4 py-2 text-sm text-lightgreen-adarkgreen font-normal rounded-xl hover:bg-black/5">Тренировки</a>
-            <a href="#" className="flex items-center w-full px-4 py-2 text-sm text-lightgreen-adarkgreen font-normal rounded-xl hover:bg-black/5">Вода</a>
-            <a href="#" className="flex items-center w-full px-4 py-2 text-sm text-lightgreen-adarkgreen font-normal rounded-xl hover:bg-black/5">Вес</a>
-            <a href="#" className="flex items-center w-full px-4 py-2 text-sm text-lightgreen-adarkgreen font-normal rounded-xl hover:bg-black/5">Профиль</a>
-          </nav>
-        </aside>
+
+      <Sidebar isOpen={sidebarOpen} onToggle={() => setSidebarOpen(v => !v)} />
 
         <div className="flex flex-col items-start relative flex-1 grow">
           <header className="flex h-[88px] items-center gap-3 pl-8 pr-10 py-0 relative self-stretch w-full border-b border-[#c1c9be]">
