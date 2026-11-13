@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import { IconHomeMenu } from "../assets/IconHomeMenu";
 import { IconAddRecord } from "../assets/IconAddRecord";
 import categoryIcon from '../assets/Category-icon.svg';
+import { Link } from "react-router-dom";
 
 const meals = [
   {
@@ -245,13 +246,13 @@ export const FoodDiaryPage = () => {
                 placeholder="Поиск продукта..." 
                 className="w-full bg-[#f1f5ec] rounded-xl px-4 py-3 text-sm text-[#181d18] outline-none focus:ring-2 focus:ring-lightgreen-adarkgreen"
               />
-              <button
-                type="button"
+              <Link
+                to="/food-diary/add"
                 onClick={closeDialog}
-                className="w-full rounded-xl bg-lightgreen-alightorange px-4 py-3 text-center text-sm font-medium text-black transition-colors hover:opacity-90"
+                className="w-full rounded-xl bg-lightgreen-alightorange px-4 py-3 text-center text-sm font-medium text-black transition-colors hover:opacity-90 block"
               >
                 Создать свой продукт
-              </button>
+              </Link>
             </div>
           </section>
         </div>
