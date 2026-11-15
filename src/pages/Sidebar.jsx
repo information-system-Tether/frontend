@@ -12,16 +12,16 @@ const menuItems = [
 export default function Sidebar({ isOpen, onToggle }) {
   return (
     <div
-      className={`self-stretch max-w-96 min-w-56 px-5 pt-4 pb-5 bg-lightgreen-alightgreen inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-200 ${
-        isOpen ? 'w-56' : 'w-16'
+      className={`self-stretch bg-lightgreen-alightgreen inline-flex flex-col justify-start items-start overflow-hidden transition-all duration-300 ease-in-out shrink-0 ${
+        isOpen ? 'w-56 px-5' : 'w-16 px-2'
       }`}
     >
-      <div className="self-stretch h-28 relative">
+      <div className="self-stretch h-28 relative flex items-center">
         <button
           type="button"
           onClick={onToggle}
           aria-label={isOpen ? 'Скрыть меню' : 'Показать меню'}
-          className="size-14 left-0 top-0 absolute inline-flex justify-center items-center rounded-2xl text-lightgreen-adarkgreen hover:bg-black/5"
+          className="w-12 h-12 flex justify-center items-center rounded-2xl text-lightgreen-adarkgreen hover:bg-black/5 transition-colors"
         >
           <svg
             width="24"
@@ -39,8 +39,8 @@ export default function Sidebar({ isOpen, onToggle }) {
         </button>
       </div>
 
-      <div className="self-stretch flex flex-col justify-start items-start gap-3">
-        <nav className="self-stretch flex flex-col justify-start items-start overflow-hidden">
+      <div className="self-stretch flex flex-col justify-start items-start gap-3 mt-4">
+        <nav className="self-stretch flex flex-col justify-start items-start overflow-hidden w-full">
           {menuItems.map(({ to, label }) => (
             <NavLink
               key={to}
@@ -48,12 +48,16 @@ export default function Sidebar({ isOpen, onToggle }) {
               end
               title={!isOpen ? label : undefined}
               className={({ isActive }) =>
-                `self-stretch h-10 inline-flex justify-start items-center overflow-hidden text-lightgreen-adarkgreen text-sm font-['Inter'] hover:bg-black/5 rounded-lg ${
-                  isActive ? 'font-medium' : 'font-normal'
-                } ${isOpen ? 'pl-5' : 'justify-center px-0'}`
+                `self-stretch h-10 inline-flex items-center overflow-hidden text-lightgreen-adarkgreen text-sm hover:bg-black/5 rounded-lg transition-all duration-300 ${
+                  isActive ? 'font-medium bg-black/5' : 'font-normal'
+                } ${isOpen ? 'justify-start px-3' : 'justify-center px-0'}`
               }
             >
-              {isOpen ? label : label.charAt(0)}
+              {isOpen ? (
+                <span className="truncate">{label}</span>
+              ) : (
+                <span className="font-semibold">{label.charAt(0)}</span>
+              )}
             </NavLink>
           ))}
         </nav>
